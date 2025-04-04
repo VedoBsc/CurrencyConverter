@@ -29,21 +29,21 @@ class Currency:
 
         # Entry-Feld
         self.curr1 = tk.Entry(root)
-        self.curr1.grid(row=0, column=0)
+        self.curr1.grid(row=1, column=0)
 
         # Auswahl
         self.t_curr = tk.StringVar(value="USD") #Main Currency ist USD
         self.drop = tk.OptionMenu(root, self.t_curr, *exchange_rates.keys()) #fügt ein option menu hinzu mit den Werten aus der exchange_rates dictionary
-        self.drop.grid(row=0, column=1)
+        self.drop.grid(row=0, column=2)
         #Auswahl der Sprache
         self.t_lang = tk.StringVar(value="en") #Main Language ist Englisch
         self.drop = tk.OptionMenu(root, self.t_lang, *languages.keys()) #fügt ein option menu hinzu mit den Sprachen aus der languages dictionary
-        self.drop.grid(row=0, column=2) #ist die erste Reihe und die zweite Spalte
+        self.drop.grid(row=0, column=0) #ist die erste Reihe und die zweite Spalte
         self.t_lang.trace_add("write", self.update_language) #aktualisiert die Sprache zu aktualisieren
 
         # Button
         self.convert_button = tk.Button(root, command=self.convert) #Button um die Werte umzurechnen
-        self.convert_button.grid(row=1, column=0, columnspan=3)
+        self.convert_button.grid(row=5, column=1, columnspan=3)
         self.convert_button.config(text= "Convert")
 
     
@@ -51,7 +51,7 @@ class Currency:
 
         # Label für Ausgabe
         self.curr2 = tk.Entry(root, state="disabled")
-        self.curr2.grid(row=2, column=0, columnspan=3)
+        self.curr2.grid(row=1, column=4, columnspan=3)
     
     def update_language(self, *args): #Methode um die Sprache zu aktualisieren
         lang = self.t_lang.get()
